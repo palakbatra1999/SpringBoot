@@ -1,0 +1,31 @@
+🧊 What is a Singleton?
+In simple terms:
+
+A singleton means only one instance of a class (bean) is created throughout the entire Spring application.
+
+So, when you declare a bean (e.g., with @Component or @Bean), Spring will create it only once, and reuse that same instance wherever it's injected.
+
+💡 Think of it like this:
+Imagine a printer in an office. Instead of giving every employee their own printer, there’s just one printer shared by everyone. That’s a singleton.
+
+✅ In Spring (by default):
+java
+Copy
+Edit
+@Component
+public class MyService {
+    // This is a singleton bean by default
+}
+Now if multiple classes @Autowired this MyService, Spring will inject the same instance every time.
+
+🔄 What if you want a new instance every time?
+Then you’d use another scope like @Scope("prototype"):
+
+java
+Copy
+Edit
+@Component
+@Scope("prototype")
+public class MyService {
+    // A new instance will be created every time it's requested
+}
