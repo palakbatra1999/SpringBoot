@@ -1,0 +1,47 @@
+ The use of **public** and **private** in Spring Boot (and Java in general) comes from Java’s access modifiers — they control visibility and accessibility of classes, methods, and variables.
+
+Even though you're using Spring Boot, these are pure Java rules, not Spring-specific.
+
+🔐 Java Access Modifiers Recap:
+Modifier	Access Level	Used For	Accessible From
+public	🔓 Open	Classes, methods, fields	Anywhere (any class/package)
+private	🔒 Locked	Methods, fields	Only within the same class
+protected	🛡️ Partial	Methods, fields	Same package or subclasses
+(default)	🧱 Package	Classes, methods, fields	Same package only
+🧠 Why some things are public and others private in Spring Boot?
+✅ public is used when:
+The class or method is meant to be accessed by Spring or other parts of your app
+
+Example: @RestController, service methods, @GetMapping endpoints
+
+java
+Copy
+Edit
+@RestController
+public class MyController { // must be public so Spring can discover it
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hi!";
+    }
+}
+Spring uses reflection under the hood, and it needs public access to work with classes/methods.
+
+✅ private is used when:
+You want to hide internal logic (encapsulation)
+
+That method or field is only for internal use, not for other classes
+
+
+@Service
+public class MyService {
+
+    public void processData() {
+        String result = getInternalValue();
+        // Do something
+    }
+
+    private String getInternalValue() {
+        return "secret";  // Not needed outside this class
+    }
+}
