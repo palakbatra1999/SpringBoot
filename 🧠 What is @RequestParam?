@@ -1,0 +1,17 @@
+🧠 What is @RequestParam?
+@RequestParam is a Spring annotation used to extract query parameters from the URL of an HTTP request and bind them to method arguments.
+
+
+
+✅ Example
+Let’s say a user hits this URL:
+
+--GET /greet?name=Palak
+
+Here’s how you grab that name using @RequestParam:
+
+@GetMapping("/greet")
+public String greetUser(@RequestParam String name) {
+    return "Hello, " + name + "!";
+}
+⏩ Output: Hello, Palak!
