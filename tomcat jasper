@@ -1,0 +1,38 @@
+🧠 What is Tomcat Jasper?
+Jasper is the JSP (JavaServer Pages) engine used inside Apache Tomcat.
+
+So when you write .jsp files in your web app (like login.jsp), Jasper is the part of Tomcat that:
+
+Compiles those .jsp files into Java Servlet classes
+
+Runs them to generate dynamic HTML
+
+In other words:
+
+Your JSP → Jasper → Compiled Servlet → HTML to browser
+
+
+
+
+-----------------------------------------------------
+
+🧱 So what is Tomcat then?
+Apache Tomcat is a lightweight web server + servlet container that runs your Java web app.
+
+Spring Boot embeds Tomcat by default — so you don’t need to install it separately.
+
+-----------------------------------------------------
+
+✅ Why would I see "tomcat-jasper" in my dependencies?
+If you're using JSP in your Spring Boot app (not common in modern setups), you'll need:
+
+
+<dependency>
+  <groupId>org.apache.tomcat.embed</groupId>
+  <artifactId>tomcat-embed-jasper</artifactId>
+</dependency>
+Because:
+
+Spring Boot does NOT include Jasper by default
+
+If you use .jsp, you need to add this manually
